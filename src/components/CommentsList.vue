@@ -33,8 +33,8 @@ export default {
       comments: "getComments",
     }),
   },
-  mounted() {
-    this.getComments();
+  async mounted() {
+    await this.getComments();
   },
 };
 </script>

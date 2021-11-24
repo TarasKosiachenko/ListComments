@@ -1,10 +1,12 @@
 <template>
   <div class="soluion">
+    <CommentForm />
     <CommentsList />
   </div>
 </template>
 
 <script>
+import CommentForm from "@/components/CommentForm.vue";
 import CommentsList from "@/components/CommentsList.vue";
 
 export default {
@@ -14,6 +16,7 @@ export default {
   },
   components: {
     CommentsList,
+    CommentForm,
   },
 };
 </script>

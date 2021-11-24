@@ -7,20 +7,22 @@ const store = new Vuex.Store({
   state: {
     comments: [],
     links: [],
+    url: "https://jordan.ashton.fashion/api/goods/30/comments",
   },
   actions: {
-    async GET_COMMENTS({ commit }) {
-      const response = await fetch(
-        "https://jordan.ashton.fashion/api/goods/30/comments"
-      );
+    async GET_COMMENTS({ commit, getters }) {
+      const response = await fetch(getters.getUrl);
       const result = await response.json();
       commit("setComments", result.data);
       commit("setLinks", result.links);
-      console.log(result);
-      console.log(result.links);
+      // console.log(result);
+      // console.log(result.links);
     },
   },
   mutations: {
+    setUrl(state, url) {
+      state.url = url;
+    },
     setComments(state, comments) {
       state.comments = [...comments];
     },
@@ -31,6 +33,9 @@ const store = new Vuex.Store({
   getters: {
     getComments(state) {
       return state.comments;
+    },
+    getUrl(state) {
+      return state.url;
     },
     getLinks(state) {
       return state.links;

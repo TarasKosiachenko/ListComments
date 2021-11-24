@@ -1,10 +1,12 @@
 <template>
   <div class="pagination-item">
-    <div class="link-item">{{ link.label }}</div>
+    <div class="link-item" @click="handlePageClick">{{ link.label }}</div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapMutations } from "vuex";
+
 export default {
   name: "PaginationItem",
   data() {
@@ -15,6 +17,18 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    async handlePageClick() {
+      this.setUrl(this.link.url);
+      await this.getComments();
+    },
+    ...mapMutations({
+      setUrl: "setUrl",
+    }),
+    ...mapActions({
+      getComments: "GET_COMMENTS",
+    }),
   },
 };
 </script>
