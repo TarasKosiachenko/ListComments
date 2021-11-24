@@ -1,7 +1,11 @@
 <template>
   <div class="pagination">
     <div class="page">
-      <PaginationItem v-for="link in links" :key="link.label" :link="link" />
+      <PaginationItem
+        v-for="(link, index) in links"
+        :key="index"
+        :link="link"
+      />
     </div>
   </div>
 </template>

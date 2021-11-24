@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapActions, mapMutations } from "vuex";
+import { mapActions, mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "PaginationItem",
@@ -18,13 +18,33 @@ export default {
       required: true,
     },
   },
+  computed: {
+    ...mapGetters({
+      currentPage: "getCurrentPage",
+    }),
+  },
   methods: {
     async handlePageClick() {
-      this.setUrl(this.link.url);
-      await this.getComments();
+      if (isNaN(this.link.label) && this.link.label.includes("Next")) {
+        this.setCurrentPage(this.currentPage + 1);
+        this.setUrlWithCurentPage();
+        await this.getComments();
+      } else if (
+        isNaN(this.link.label) &&
+        this.link.label.includes("Previous")
+      ) {
+        this.setCurrentPage(this.currentPage - 1);
+        this.setUrlWithCurentPage();
+        await this.getComments();
+      } else {
+        this.setUrl(this.link.url);
+        await this.getComments();
+      }
     },
     ...mapMutations({
       setUrl: "setUrl",
+      setCurrentPage: "setCurentPage",
+      setUrlWithCurentPage: "setUrlWithCurentPage",
     }),
     ...mapActions({
       getComments: "GET_COMMENTS",
