@@ -1,7 +1,7 @@
 <template>
   <div class="comment-item">
-    <p>Name: {{ comment.name }}</p>
-    <p>Text: {{ comment.text }}</p>
+    <p class="item-name">Name: {{ comment.name }}</p>
+    <p class="item-text">Text: {{ comment.text }}</p>
   </div>
 </template>
 
@@ -23,8 +23,17 @@ export default {
 <style scoped>
 .comment-item {
   display: flex;
+  border: 1px solid #000;
+  word-break: break-all;
 }
 .comment-item p {
-  padding-left: 40px;
+  padding-left: 30px;
+}
+.item-name {
+  width: 20%;
+}
+.item-text {
+  width: 80%;
+  text-align: left;
 }
 </style>

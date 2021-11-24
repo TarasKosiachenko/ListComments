@@ -5,11 +5,13 @@
       :key="comment.id"
       :comment="comment"
     />
+    <Pagination />
   </div>
 </template>
 
 <script>
 import CommentItem from "@/components/CommentItem.vue";
+import Pagination from "@/components/Pagination.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -19,6 +21,7 @@ export default {
   },
   components: {
     CommentItem,
+    Pagination,
   },
   methods: {
     ...mapActions({
@@ -36,4 +39,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.comments-list {
+  margin: 10px;
+}
+</style>
