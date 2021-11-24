@@ -1,6 +1,8 @@
 <template>
   <div class="pagination-item">
-    <div class="link-item" @click="handlePageClick">{{ link.label }}</div>
+    <div class="link-item" @click="handlePageClick">
+      {{ link.label }}
+    </div>
   </div>
 </template>
 
@@ -55,7 +57,16 @@ export default {
 
 <style scoped>
 .link-item {
-  border: 1px solid #000;
+  border: 1px solid rgb(58, 58, 58);
+  border-radius: 3px;
   padding: 5px;
+  cursor: pointer;
+}
+.link-item:hover {
+  background: rgb(180, 180, 180);
+}
+.link-item .active {
+  background-color: #000;
+  color: #fff;
 }
 </style>

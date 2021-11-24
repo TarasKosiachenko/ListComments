@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Task</router-link> <br />
+      <router-link to="/">Task </router-link>|
       <router-link to="/solution">Solution</router-link>
     </div>
     <div class="context"><router-view /></div>
@@ -19,18 +19,12 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #393c3f;
-  display: flex;
-  justify-content: space-between;
 }
 
 #nav {
-  width: max-content;
   padding: 1vw;
-  text-align: left;
-  font-size: 2vw;
-  line-height: 40px;
+  font-size: 20px;
 }
 
 #nav a {

@@ -41,6 +41,9 @@ export default {
 
 <style scoped>
 .comments-list {
-  margin: 10px;
+  margin-top: 10px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

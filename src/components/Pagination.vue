@@ -1,5 +1,6 @@
 <template>
   <div class="pagination">
+    <div class="pagination-btn"><button>Show More</button></div>
     <div class="page">
       <PaginationItem
         v-for="(link, index) in links"
@@ -32,7 +33,16 @@ export default {
 
 <style scoped>
 .pagination {
-  padding-top: 50px;
+  padding: 20px;
+  margin: auto;
+}
+.pagination-btn {
+  width: max-content;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.pagination-btn button {
+  padding: 5px;
 }
 .page {
   display: flex;
