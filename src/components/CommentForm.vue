@@ -1,9 +1,16 @@
 <template>
   <div class="comment-form">
     <div class="body-form">
-      <input type="text" placeholder="Name:" />
-      <textarea name="text" placeholder="Text:" wrap="soft"> </textarea>
-      <button class="form-btn">CKICK</button>
+      <input type="text" placeholder="Name:" required="" v-model="searchName" />
+      <textarea
+        name="text"
+        placeholder="Text:"
+        wrap="soft"
+        required=""
+        v-model="searchText"
+      >
+      </textarea>
+      <button class="form-btn" @click="sendReview()">CKICK</button>
     </div>
   </div>
 </template>
@@ -12,7 +19,29 @@
 export default {
   name: "CommentForm",
   data() {
-    return {};
+    return {
+      searchName: "",
+      searchText: "",
+    };
+  },
+  methods: {
+    async sendReview() {
+      let data = {
+        name: this.searchName,
+        text: this.searchText,
+      };
+      this.searchName = "";
+      this.searchText = "";
+      await fetch("https://jordan.ashton.fashion/api/goods/30/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then(() => {
+        this.$emit("reload");
+      });
+    },
   },
 };
 </script>

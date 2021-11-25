@@ -1,6 +1,10 @@
 <template>
   <div class="pagination-item">
-    <div class="link-item" @click="handlePageClick">
+    <div
+      class="link-item"
+      @click="handlePageClick"
+      :class="{ active: link.active }"
+    >
       {{ link.label }}
     </div>
   </div>
@@ -65,8 +69,8 @@ export default {
 .link-item:hover {
   background: rgb(180, 180, 180);
 }
-.link-item .active {
-  background-color: #000;
+.active {
+  background: #000;
   color: #fff;
 }
 </style>

@@ -9,6 +9,7 @@ const store = new Vuex.Store({
     links: [],
     url: "https://jordan.ashton.fashion/api/goods/30/comments",
     currentPage: 1,
+    lastPage: null,
   },
   actions: {
     async GET_COMMENTS({ commit, getters }) {
@@ -17,10 +18,14 @@ const store = new Vuex.Store({
       commit("setComments", result.data);
       commit("setLinks", result.links);
       commit("setCurentPage", result.current_page);
+      commit("setLastPage", result.last_page);
       console.log(result);
     },
   },
   mutations: {
+    setLastPage(state, page) {
+      state.lastPage = page;
+    },
     setCurentPage(state, page) {
       state.currentPage = page;
     },
@@ -49,6 +54,9 @@ const store = new Vuex.Store({
     },
     getLinks(state) {
       return state.links;
+    },
+    getLastPage(state) {
+      return state.lastPage;
     },
   },
 });
